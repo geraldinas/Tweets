@@ -1,0 +1,3 @@
+<% $client.search("to:justinbieber marry me", result_type: "recent").take(10).collect do |tweet| %>
+  <%= "#{tweet.user.screen_name}: #{tweet.text}" %>
+<% end %>
