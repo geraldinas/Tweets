@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
+  
   def index
-    render :index
+    @mean_tweets = Post.find_mean_tweets
   end
 end

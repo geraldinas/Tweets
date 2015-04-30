@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem 'sentimentalizer'
+gem 'sentiment_lib'
 gem 'twitter'
 gem 'figaro'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

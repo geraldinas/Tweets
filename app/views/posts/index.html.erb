@@ -1,3 +1,3 @@
-<% $client.search("to:justinbieber marry me", result_type: "recent").take(10).collect do |tweet| %>
-  <%= "#{tweet.user.screen_name}: #{tweet.text}" %>
-<% end %>
+<% @mean_tweets.each do |tweet| %>
+  <%= tweet%><br><br>
+<% end %><br><br>
