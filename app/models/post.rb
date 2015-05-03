@@ -31,11 +31,8 @@ class Post < ActiveRecord::Base
   end
 
   def self.syllable_count
-    word_randomizer.each_with_object(Hash.new('')) do |word, hash|
-        #hash.each do |key, value|
-        hash[word.count_syllables] += word
-      end
-    binding.pry
+    word_randomizer.each_with_object(Hash.new('')) do |word, combos|
+        combos[word] = word.count_syllables
+    end
   end
-
 end
