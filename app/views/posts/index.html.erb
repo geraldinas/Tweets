@@ -1,6 +1,8 @@
-<% @syllabizer.each do |key, value| %>
-  WORD:  <b><%=key %></b>            SYLLABLES: <b><%=value %></b><br>  
-<% end %>
+
+<%#= @syllabizer%>
 
 <h1><%= @randomizer.count %><br><br></h1>
-<%= @syllabizer%>
+
+<%=@five_sentence.first%><br>
+<%=@seven_sentence%><br>
+<%=@five_sentence.second%><br>
