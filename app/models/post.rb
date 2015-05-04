@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
 
   def get_tweets
     @tweetarray = []
-    $client.user_timeline(self.name, count: 5000).each do |tweet|
+    $client.user_timeline(self.name, count: 100).each do |tweet|
       @tweetarray << tweet
     end
     @tweetarray
@@ -77,17 +77,26 @@ class Post < ActiveRecord::Base
       syllables << seven_syllable_combo_maker
     end
     syllables
+    # syllables.each do |sentence_array|
+    #   sentence_array.each do |sentence|
+    #     sentence
+    #   end
+
+    # end
   end
 
   def complete_haiku
+    haiku = []
     get_list_five_syllables.first.each do |word|
-      word.capitalize
-    end
+      haiku << word.capitalize
+    binding.pry
     get_list_seven_syllables.first.each do |word|
-      word.capitalize
-    end
+      haiku << word.capitalize    
+      binding.pry
     get_list_five_syllables.second.each do |word|
-      word.capitalize
+      haiku << word.capitalize
+    end
+  end
     end
   end
 end
