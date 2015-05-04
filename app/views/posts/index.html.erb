@@ -5,6 +5,8 @@
 <h1><%#= @randomizer.count%><br><br></h1>
 <h1><%#= @randomizer%><br><br></h1>
 
-<%=@five_sentence.first%><br>
+<%@five_sentence.first.each do |word|%>
+<%= word %>
+<%end %>
 <%=@seven_sentence%><br>
 <%=@five_sentence.second%><br>
