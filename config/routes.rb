@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'posts#new'
-  
+
   get '/posts/new', :to => 'posts#new'
 
   post '/posts', to: 'posts#create'

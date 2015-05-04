@@ -2,9 +2,9 @@ class Post < ActiveRecord::Base
 
   def get_tweets
     @tweetarray = []
-    $client.user_timeline(self.name, count: 5000).each do |tweet|
-      @tweetarray << tweet
-    end
+    $client.user_timeline(self.name, count: 50).each do |tweet|
+       @tweetarray << tweet
+     end
     @tweetarray
   end
 
@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
     @tweetarray = get_tweets
     regex_words = []
     @tweetarray.each do |word_array|
-      @tweetdupe = word_array.text.dup
+      @tweetdupe = word_array.text.dup #word_array.text.dup
       regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, " ")#.gsub(/http(.*)/, "").gsub(/@(.*)/, "").gsub(/RT/,"").gsub(".","")
     end
     regex_words
@@ -77,17 +77,24 @@ class Post < ActiveRecord::Base
       syllables << seven_syllable_combo_maker
     end
     syllables
+    # syllables.each do |sentence_array|
+    #   sentence_array.each do |sentence|
+    #     sentence
+    #   end
+
+    # end
   end
 
   def complete_haiku
+    haiku = []
     get_list_five_syllables.first.each do |word|
-      word.capitalize
-    end
+      haiku << word.capitalize
     get_list_seven_syllables.first.each do |word|
-      word.capitalize
-    end
+      haiku << word.capitalize    
     get_list_five_syllables.second.each do |word|
-      word.capitalize
+      haiku << word.capitalize
+    end
+  end
     end
   end
 end
