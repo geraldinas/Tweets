@@ -1,8 +1,4 @@
-<% @mean_tweets.each do |tweet| %>
-  <%= tweet%><br><br>
-<% end %><br><br>
-
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -14,13 +10,20 @@
   <body>
 
     <div class="container">
-      <img src="images/logo.png" id="logoImage">
-      <div class="inputContainer">
-        <input type="text" value="@yourtwitter">
-        <input type="button" value="CREATE HAIKU">
+      <div class="haikuContainer">
+        <p>
+          old pond...<br>
+          a frog leaps in<br>
+          water's sound </p>
+
+        <h4>@yourname</h4>
+        <input type="button" value="Retweet">
+        <input type="button" value="Go Back">
       </div>
 
     </div>
 
-  </body>
+  </div>
+
+</body>
 </html>
