@@ -20,17 +20,71 @@
  */
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
-body {
-  padding-top: 70px;
-  padding-bottom: 30px;
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Droid Serif",sans-serif;
 }
 
-.theme-dropdown .dropdown-menu {
-  position: static;
+html {
+  background: #ffffff url("../images/background.jpg") no-repeat center center fixed;
+  width: 100%;
+  height: 100%;
   display: block;
-  margin-bottom: 20px;
+  background-size: cover;
+  position: absolute;
 }
 
-.theme-showcase > p > .btn {
-  margin: 5px 0;
+.container {
+  padding: 10%;
+}
+
+.haikuContainer {
+  width: 50%;
+  margin: 0 auto;
+  background-color: rgba(255,255,255,.7);
+  padding: 2em;
+}
+
+.haikuContainer p {
+  font-size: 2em;
+}
+
+.haikuContainer h4 {
+  margin-top: 3em;
+  text-align: right;
+}
+
+.haikuContainer input {
+  float: right;
+  margin-top: 5em;
+  margin-left: 2em;
+}
+
+#logoImage {
+  margin: 0 auto;
+  margin-bottom: 5em;
+  display: block;
+  clear: both;
+  max-width: 90%;
+}
+
+.inputContainer {
+  display: block;
+  clear: both;
+  text-align: center;
+  min-width: 70%;
+}
+
+input[type=text] {
+  padding: 1em;
+}
+
+input[type=button] {
+  padding: 1em;
+  background-color: #D6C600;
+  border: 1px solid #C1B300;
+  color: white;
+  font-weight: bold;
 }
