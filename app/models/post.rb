@@ -1,10 +1,10 @@
 class Post < ActiveRecord::Base
 
   def get_tweets
-    @tweetarray = ["cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog"]
-    # $client.user_timeline(self.name, count: 50).each do |tweet|
-    #   @tweetarray << tweet
-    # end
+    @tweetarray = []
+    $client.user_timeline(self.name, count: 50).each do |tweet|
+       @tweetarray << tweet
+     end
     @tweetarray
   end
 
@@ -12,8 +12,9 @@ class Post < ActiveRecord::Base
     @tweetarray = get_tweets
     regex_words = []
     @tweetarray.each do |word_array|
-      @tweetdupe = word_array.dup #word_array.text.dup
+      @tweetdupe = word_array.text.dup
       regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, " ")
+
     end
     regex_words
   end

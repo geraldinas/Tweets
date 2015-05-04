@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+*source 'https://rubygems.org'
 gem 'syllabize'
 gem 'numbers_and_words'
 gem 'twitter'
