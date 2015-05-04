@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
 
   def self.get_obama_tweets
     @tweetarray = []
-    $client.user_timeline("kanyewest", count: 500).each do |tweet|
+    $client.user_timeline("oprah", count: 5000).each do |tweet|
       @tweetarray << tweet
     end
     @tweetarray
@@ -12,7 +12,8 @@ class Post < ActiveRecord::Base
     regex_words = []
     @tweetarray.each do |word_array|
       @tweetdupe = word_array.text.dup
-      regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, "")#.gsub(/http(.*)/, "").gsub(/@(.*)/, "").gsub(/RT/,"").gsub(".","")
+      regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, " ")#.gsub(/http(.*)/, "").gsub(/@(.*)/, "").gsub(/RT/,"").gsub(".","")
+      #regex_words << @tweetdupe.gsub(/http(.*)/, " ").gsub(/@(.*)/, " ").gsub(/RT/," ").gsub("."," ")
     end
     regex_words
   end

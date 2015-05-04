@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @filter_words = Post.filter_words
     @randomizer = Post.word_randomizer
     @syllabizer = Post.syllable_count
-    @five_sentence = Post.get_list_five_syllables()
+    @five_sentence = Post.get_list_five_syllables(2)
     @seven_sentence = Post.get_list_seven_syllables(1)
   end
 end
