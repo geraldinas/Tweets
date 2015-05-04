@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
     regex_words = []
     @tweetarray.each do |word_array|
       @tweetdupe = word_array.dup #word_array.text.dup
-      regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, " ")#.gsub(/http(.*)/, "").gsub(/@(.*)/, "").gsub(/RT/,"").gsub(".","")
+      regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, " ")
     end
     regex_words
   end
@@ -77,12 +77,6 @@ class Post < ActiveRecord::Base
       syllables << seven_syllable_combo_maker
     end
     syllables
-    # syllables.each do |sentence_array|
-    #   sentence_array.each do |sentence|
-    #     sentence
-    #   end
-
-    # end
   end
 
   def complete_haiku
