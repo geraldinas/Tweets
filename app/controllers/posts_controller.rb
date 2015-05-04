@@ -4,13 +4,13 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       redirect_to "/posts/#{@post.id}"
-    #else
-      #redirect_to "/posts/error"
-    end
+    # else
+    #   redirect_to "/posts/error"
+     end
   end
 
-  def error
-
+  def error 
+    
   end
 
   def new

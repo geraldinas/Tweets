@@ -1,10 +1,10 @@
 class Post < ActiveRecord::Base
 
   def get_tweets
-    @tweetarray = []
-    $client.user_timeline(self.name, count: 100).each do |tweet|
-      @tweetarray << tweet
-    end
+    @tweetarray = ["cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog", "cat", "", "dog"]
+    # $client.user_timeline(self.name, count: 50).each do |tweet|
+    #   @tweetarray << tweet
+    # end
     @tweetarray
   end
 
@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
     @tweetarray = get_tweets
     regex_words = []
     @tweetarray.each do |word_array|
-      @tweetdupe = word_array.text.dup
+      @tweetdupe = word_array.dup #word_array.text.dup
       regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, " ")#.gsub(/http(.*)/, "").gsub(/@(.*)/, "").gsub(/RT/,"").gsub(".","")
     end
     regex_words
@@ -89,10 +89,8 @@ class Post < ActiveRecord::Base
     haiku = []
     get_list_five_syllables.first.each do |word|
       haiku << word.capitalize
-    binding.pry
     get_list_seven_syllables.first.each do |word|
       haiku << word.capitalize    
-      binding.pry
     get_list_five_syllables.second.each do |word|
       haiku << word.capitalize
     end

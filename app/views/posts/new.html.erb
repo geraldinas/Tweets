@@ -2,7 +2,7 @@
   <%=image_tag('Logo.png', :id => "logoImage")%>
   <div class="inputContainer">
     <%= form_for @post do |f|%>
-    <h2>@<%= f.text_field :name %>
+    <div class="text"><p>@<%= f.text_field :name %></p></div>
      <%= f.submit 'Create Haiku', class: 'linkBtn' %>
     <%end%>
   </div>
