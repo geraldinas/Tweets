@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="haikuContainer">
+    @<%= @post.name %>
+     <%=@complete_haiku%>
+    <br><%= link_to("Retweet","https://twitter.com/intent/tweet?via=hashtaghaiku&text=#{"@complete_haiku"}&&url=http://www.hashtaghaiku.com/posts/#{@post.id}", class: 'linkBtn') %>
+   <%= link_to("Go Back",root_path, class: 'linkBtn') %>
+  </div>
+</div>

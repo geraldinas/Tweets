@@ -1,0 +1,10 @@
+<div class="container">
+  <%=image_tag('Logo.png', :id => "logoImage")%>
+  <div class="inputContainer">
+    <%= form_for @post do |f|%>
+     <%= f.text_field :name %><br>
+     <%= f.submit 'Create Haiku', class: 'linkBtn' %>
+    <%end%>
+  </div>
+
+</div>

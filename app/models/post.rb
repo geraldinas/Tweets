@@ -1,24 +1,24 @@
 class Post < ActiveRecord::Base
 
-  def self.get_obama_tweets
+  def get_tweets
     @tweetarray = []
-    $client.user_timeline("oprah", count: 5000).each do |tweet|
+    $client.user_timeline(self.name, count: 5000).each do |tweet|
       @tweetarray << tweet
     end
     @tweetarray
   end
 
-  def self.filter_words
+  def filter_words
+    @tweetarray = get_tweets
     regex_words = []
     @tweetarray.each do |word_array|
       @tweetdupe = word_array.text.dup
       regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, " ")#.gsub(/http(.*)/, "").gsub(/@(.*)/, "").gsub(/RT/,"").gsub(".","")
-      #regex_words << @tweetdupe.gsub(/http(.*)/, " ").gsub(/@(.*)/, " ").gsub(/RT/," ").gsub("."," ")
     end
     regex_words
   end
 
-  def self.split_word
+  def split_word
     @words = []
     filter_words.each do |tweet|
       @words << tweet.split(' ')
@@ -27,17 +27,17 @@ class Post < ActiveRecord::Base
   end
 
 
-  def self.word_randomizer
+  def word_randomizer
     @randomized = split_word.shuffle
   end
 
-  def self.syllable_count
+  def syllable_count
     word_randomizer.each_with_object(Hash.new('')) do |word, combos|
         combos[word] = word.count_syllables
     end
   end
 
-  def self.five_syllable_combo_maker
+  def five_syllable_combo_maker
     sum = 0
     words = []
 
@@ -50,7 +50,7 @@ class Post < ActiveRecord::Base
     words
   end
 
-  def self.seven_syllable_combo_maker
+  def seven_syllable_combo_maker
     sum = 0
     words = []
 
@@ -63,7 +63,7 @@ class Post < ActiveRecord::Base
     words
   end
 
-  def self.get_list_five_syllables(n = 10)
+  def get_list_five_syllables(n = 10)
     syllables = []
     n.times do 
       syllables << five_syllable_combo_maker
@@ -71,11 +71,23 @@ class Post < ActiveRecord::Base
     syllables
   end
 
-  def self.get_list_seven_syllables(n = 10)
+  def get_list_seven_syllables(n = 10)
     syllables = []
     n.times do 
       syllables << seven_syllable_combo_maker
     end
     syllables
+  end
+
+  def complete_haiku
+    get_list_five_syllables.first.each do |word|
+      word.capitalize
+    end
+    get_list_seven_syllables.first.each do |word|
+      word.capitalize
+    end
+    get_list_five_syllables.second.each do |word|
+      word.capitalize
+    end
   end
 end
