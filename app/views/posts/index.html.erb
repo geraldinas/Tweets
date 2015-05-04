@@ -7,9 +7,13 @@
 
 <%@five_sentence.first.each do |word|%>
 <%= word %>
-<%end %>
-<%=@seven_sentence%><br>
-<%=@five_sentence.second%><br>
+<%end %><br>
+<%@seven_sentence.first.each do |word|%>
+<%= word %>
+<%end %><br>
+<%@five_sentence.second.each do |word|%>
+<%= word %>
+<%end %><br>
 
 <!DOCTYPE html>
 <html lang="en">
