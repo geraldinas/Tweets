@@ -1,20 +1,22 @@
 class Post < ActiveRecord::Base
+  $count = 0
+  $tweetarray = $client.user_timeline('', count: 50)
 
-  def get_tweets
-    @tweetarray = []
-    $client.user_timeline(self.name, count: 50).each do |tweet|
-       @tweetarray << tweet
-     end
-    @tweetarray
+  def Post.get_tweets
+    puts "you are calling this shit" 
+    puts $count
+    $count +=1
+
+    $tweetarray.each do |tweet|
+      $tweetarray << tweet
+    end
   end
 
   def filter_words
-    @tweetarray = get_tweets
     regex_words = []
-    @tweetarray.each do |word_array|
+    $tweetarray.each do |word_array|
       @tweetdupe = word_array.text.dup
       regex_words << @tweetdupe.gsub(/#(.*)|http(.*)|@(.*)|RT|\.|\W|\d/, " ")
-
     end
     regex_words
   end
@@ -64,7 +66,7 @@ class Post < ActiveRecord::Base
     words
   end
 
-  def get_list_five_syllables(n = 10)
+  def get_list_five_syllables(n = 2)
     syllables = []
     n.times do 
       syllables << five_syllable_combo_maker
@@ -72,7 +74,7 @@ class Post < ActiveRecord::Base
     syllables
   end
 
-  def get_list_seven_syllables(n = 10)
+  def get_list_seven_syllables(n = 1)
     syllables = []
     n.times do 
       syllables << seven_syllable_combo_maker
